@@ -27,13 +27,17 @@
 			</view>
 		</view>
 
-
-
+		<view class="edit-background-style">
+			<view class="change-tips">
+				系统版本号设置
+			</view>
+			<view class="change-input-style">
+				<input type="number" :value="version" @input="serVersion">
+			</view>
+		</view>
 		<view class="save-btn-style">
 			<button @click="save">保存</button>
 		</view>
-
-
 	</view>
 </template>
 
@@ -48,6 +52,8 @@
 				wechat: null,
 				otherInfo: null,
 				online: null,
+				version: null,
+
 			}
 		},
 		created() {
@@ -59,6 +65,7 @@
 				that.downloadUrl = otherInfo.downloadUrl;
 				that.wechat = otherInfo.wechat;
 				that.online = otherInfo.online;
+				that.version = otherInfo.version;
 			}, 200);
 		},
 		methods: {
@@ -72,6 +79,9 @@
 			},
 			setWechat(e) {
 				that.wechat = e.detail.value;
+			},
+			serVersion(e) {
+				that.version = e.detail.value;
 			},
 			setDownLoad(e) {
 				that.downloadUrl = e.detail.value;
@@ -91,10 +101,18 @@
 					})
 					return;
 				}
+				if (that.version == '') {
+					uni.showToast({
+						icon: 'none',
+						title: '请设置版本号'
+					})
+					return;
+				}
 				api.post({
 					wechat: that.wechat,
 					downloadUrl: that.downloadUrl,
-					online: that.online
+					online: that.online,
+					version: that.version
 				}, api.updateOther).then(res => {
 					if (res.code == 200) {
 						uni.showToast({
@@ -151,6 +169,10 @@
 
 	.change-input-style input {
 		width: 100%;
+		height: 100%;
+		border: seagreen solid 1rpx;
+		border-radius: 10rpx;
+
 	}
 
 
