@@ -82,5 +82,8 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "mp-qq" : {
+        "appid" : "1112214148"
+    }
 }

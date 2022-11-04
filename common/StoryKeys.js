@@ -28,10 +28,4 @@ export default {
 
 	// 分享项目助力对象
 	projectHelpShare: "projectHelpShare",
-
-
-
-
-
-
 }
