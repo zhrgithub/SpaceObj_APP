@@ -2,20 +2,72 @@
 	<view class="release-background-style">
 
 		<!-- 搜索框 -->
-		<view class="search-background-style">
+		<view class="search-background-style" v-if="online==1">
 			<view class="search-logo-background-style">
 				<view class="image-background-style">
 					<image src="/static/searchInput.png" mode=""></image>
 				</view>
-				<view class="input-background-style" v-if="online==1">
+				<view class="input-background-style">
 					<input :value="seachText" type="text" maxlength="15" placeholder="元宇宙、商城、聊天、APP、网站"
 						placeholder-style="font-size:14px" confirm-type="search" @confirm="doSearch" @input="inputText">
 					<image src="/static/deleteSearch.png" @click="clearInput">
+				</view>
+
+			</view>
+		</view>
+
+		<!-- <view class="search-background-style">
+			<view class="search-logo-background-style">
+				<view class="image-background-style">
+					<image src="/static/searchInput.png" mode=""></image>
 				</view>
 				<view class="input-background-style" v-if="online==0">
 					<input :value="seachText" type="text" maxlength="15" placeholder="名人传,拿破仑,秦孝公..."
 						placeholder-style="font-size:14px" confirm-type="search" @confirm="doSearch" @input="inputText">
 					<image src="/static/deleteSearch.png" @click="clearInput">
+				</view>
+			</view>
+		</view> -->
+
+
+		<view class="advertise-project-list" v-if="online==0">
+			<view class="project-list-style" style="height: 100%;" @click="toProjecDetail(item)">
+				<view class="date-status-style" v-if="online==0">
+					<view class="status-style"
+						style="width: 100%;height: 80rpx; margin-top: 20rpx;margin-bottom: 20rpx;">
+
+						田忌赛马
+					</view>
+				</view>
+				<view style="width: 96%;height: 95%;margin-left: 2%;margin-top: 10rpx;margin-bottom: 20rpx;">
+					　田忌经常与齐国诸公子赛马，设重金作为赌注。孙膑发现比赛的马可分为上、中、下三等，于是建议田忌增加赌注，并且向他保证必能取胜。田忌于是与齐威王和诸公子设每场千金作为赌注，比试赛马。孙膑叫田忌用下等马，与齐威王的上等马比赛...
+				</view>
+			</view>
+		</view>
+		<view class="advertise-project-list" v-if="online==0">
+			<view class="project-list-style" style="height: 100%;" @click="toProjecDetail(item)">
+				<view class="date-status-style" v-if="online==0">
+					<view class="status-style"
+						style="width: 100%;height: 80rpx; margin-top: 20rpx;margin-bottom: 20rpx;">
+
+						围魏救赵
+					</view>
+				</view>
+				<view style="width: 96%;height: 95%;margin-left: 2%;margin-top: 10rpx;margin-bottom: 20rpx;">
+					　初时田忌计划奔赴邯郸，与魏军主力决战，内外夹击，解邯郸之围。但孙膑认为这不利于齐国，于是提出了更为创新和可行的方法，即“批亢捣虚”与“疾走大梁”。“批亢捣虚”即是避实击虚，攻其所必救[2]，使敌人出现后顾之忧，前线之围便会自动解开。“疾走大梁”即是以迅雷不及掩耳之势向魏国重城大梁进逼，以切断魏国的运输要道，并攻其所不备。这样一来，魏军定必回师自救，齐军则可乘其疲惫于路，一举击败魏军，而赵国之围则自动解除。孙膑这一招“批亢捣虚”使得田忌甚为拜服，立即采用。于是，齐军主力，直攻大梁。在此危急存亡之际，虽然邯郸已破，魏军却只留少数兵力，留守邯郸。由主帅庞涓亲率主力回驰大梁。同时，齐军已于桂陵设伏，准备截击魏军。魏军由于长期在外作战，疲态毕露，再加长途跋涉之急速行军，士兵皆战力大降。于是齐魏一交战，魏军大败，魏军主帅庞涓被擒，与之有仇的孙膑放过了他。结果赵国之围解除，邯郸亦失而复得。“批亢捣虚”由于在桂陵之战，充份实践。因此，后世以“围魏救赵”来称呼此策略。
+				</view>
+			</view>
+		</view>
+		<view class="advertise-project-list" v-if="online==0">
+			<view class="project-list-style" style="height: 100%;" @click="toProjecDetail(item)">
+				<view class="date-status-style" v-if="online==0">
+					<view class="status-style"
+						style="width: 100%;height: 80rpx; margin-top: 20rpx;margin-bottom: 20rpx;">
+						笑里藏刀
+					</view>
+				</view>
+				<view style="width: 96%;height: 95%;margin-left: 2%;margin-top: 10rpx;margin-bottom: 20rpx;">
+					兵法上说：“敌人言辞谦逊，其实正在加紧备战；没有条约前来媾和的，定是不怀好意。”所以，凡是敌人的花言巧语，都是使用阴谋诡计的表现。 在军事谋略上一般指通过政治、外交的伪装手段，欺骗麻痹对方，以掩盖军事行动。运用这一谋略的人，“笑”的方法多种多样，有的区以求和有的，阿谀奉承，有的故作孱弱……但最终目的都是为了“藏刀”。当然，在同一阵营内，也有人为了达到个人目的，采取这一手段的，孰功孰过，难以概论.
 				</view>
 			</view>
 		</view>
@@ -53,20 +105,7 @@
 		</uni-popup>
 
 
-		<view class="advertise-project-list" v-if="online==0">
-			<view class="project-list-style" style="height: 100%;" @click="toProjecDetail(item)">
-				<view class="date-status-style" v-if="online==0">
-					<view class="status-style"
-						style="width: 100%;height: 80rpx; margin-top: 20rpx;margin-bottom: 20rpx;">
 
-						田忌赛马
-					</view>
-				</view>
-				<view style="width: 96%;height: 95%;margin-left: 2%;margin-top: 10rpx;margin-bottom: 20rpx;">
-					　田忌经常与齐国诸公子赛马，设重金作为赌注。孙膑发现比赛的马可分为上、中、下三等，于是建议田忌增加赌注，并且向他保证必能取胜。田忌于是与齐威王和诸公子设每场千金作为赌注，比试赛马。孙膑叫田忌用下等马，与齐威王的上等马比赛...
-				</view>
-			</view>
-		</view>
 
 		<view class="advertise-project-list" v-for="(item,idx) in list" :key="idx" v-if="online==1">
 
@@ -138,7 +177,7 @@
 		</view>
 
 		<!-- 提示下拉刷新~ -->
-		<view class="tips-background-style" v-if="list.length>0&&list.length<10">
+		<view class="tips-background-style" v-if="list.length>0&&list.length<10&&online==1">
 			下 拉 刷 新 ~ ~ ~
 		</view>
 		<!-- 提示上滑加载更多~ -->
@@ -178,7 +217,7 @@
 			that = this;
 		},
 		onLoad() {
-			
+
 			that.list = [];
 			that.currentPage = 1;
 			that.pageSize = 10;
@@ -203,12 +242,12 @@
 		},
 		// 触底加载更多
 		onReachBottom() {
-			
+
 			that.loadList();
 		},
 		// 下拉刷新
 		onPullDownRefresh() {
-			
+
 			that.currentPage = 1;
 			that.list = [];
 			that.loadList();
@@ -219,7 +258,7 @@
 		methods: {
 
 			touchLoad() {
-				
+
 				that.currentPage = 1;
 				that.list = [];
 				that.loadList();
@@ -287,7 +326,7 @@
 					currentPage: that.currentPage,
 					pageSize: that.pageSize
 				}, api.projectFindList).then(res => {
-					
+
 					if (res.code == 200) {
 						if (res.data.length > 0) {
 							that.list = that.list.concat(res.data);
@@ -354,14 +393,14 @@
 					return;
 				}
 
-				
+
 				api.post({
 					content: that.content,
 					price: that.price,
 					ipAddress: uni.getStorageSync(sk.ipTerritory),
 					nickname: that.userInfo.nickName,
 				}, api.projectAddProject).then(res => {
-					
+
 					if (res.code == 200) {
 						that.content = '';
 						that.price = '';
