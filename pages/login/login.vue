@@ -59,7 +59,8 @@
 			<view class="line-divider"></view>
 		</view>
 		<view class="third-party-login-background">
-			<image src="/static/wechat.png" @click="loginByWechat"/>
+			<image src="/static/wechat.png" @click="loginByWechat" v-if="uniPlatform=='mp-weixin'" />
+			<image src="/static/QQ.png" @click="loginByQQ" v-if="uniPlatform=='mp-qq'"/>
 		</view>
 
 
@@ -85,6 +86,7 @@
 				password: null,
 				number: "获取验证码",
 				verificatioin: null,
+				uniPlatform: "mp-weixin", //mp-weixin表示微信，1表示QQ
 			}
 		},
 		created() {
@@ -97,12 +99,12 @@
 		onShow() {
 			this.timer = setTimeout(() => {
 				that.number = "获取验证码"
-
+				that.uniPlatform = uni.getStorageSync(sk.deviceModel).uniPlatform;
 			}, 200)
 
 		},
 		methods: {
- 
+
 			loginByWechat() {
 
 				var nickName = nick_Name.getNickName();
@@ -128,11 +130,54 @@
 						})
 						api.post({
 							code: res.code,
-							ipTerritory: uni.getStorageSync(sk.ipTerritory)==''?'未知':uni.getStorageSync(sk.ipTerritory),
+							ipTerritory: uni.getStorageSync(sk.ipTerritory) == '' ? '未知' : uni
+								.getStorageSync(sk.ipTerritory),
 							deviceType: uni.getStorageSync(sk.deviceModel).model,
 							inviteUserId: uni.getStorageSync(sk.inviteUserId),
 							nickName: nickName
 						}, api.loginByWechat).then(res2 => {
+							if (res2.code == 200) {
+								// 缓存用户基本信息
+								uni.setStorage({
+									key: sk.userInfo,
+									data: res2.data,
+									success() {
+										that.loginResetUserinFo(res2.data, res2.data.token,
+											res2.msg);
+									}
+								})
+							}
+
+						})
+					},
+					fail: function(err) {
+						uni.showModal({
+							title: err.code,
+							content: err
+						})
+					}
+				});
+			},
+			loginByQQ() {
+
+				var nickName = nick_Name.getNickName();
+				uni.login({
+					provider: 'qq',
+					onlyAuthorize: true,
+					success: function(res) {
+						console.log("QQ信息：", res)
+						uni.showModal({
+							title: res.code,
+							content: res
+						})
+						api.post({
+							code: res.code,
+							ipTerritory: uni.getStorageSync(sk.ipTerritory) == '' ? '未知' : uni
+								.getStorageSync(sk.ipTerritory),
+							deviceType: uni.getStorageSync(sk.deviceModel).model,
+							inviteUserId: uni.getStorageSync(sk.inviteUserId),
+							nickName: nickName
+						}, api.loginByQQ).then(res2 => {
 							if (res2.code == 200) {
 								// 缓存用户基本信息
 								uni.setStorage({

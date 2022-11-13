@@ -174,6 +174,9 @@ export default {
 	login: USER + "customerUser/loginOrRegister",
 	// 微信授权登录
 	loginByWechat: USER + "customerUser/loginByWechat",
+	
+	// QQ授权登录
+	loginByQQ: USER + "customerUser/loginByQQ",
 
 	// 绑定微信
 	bindWechat: USER + "customerUser/bindWechat",
