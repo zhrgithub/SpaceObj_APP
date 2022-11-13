@@ -25,7 +25,7 @@
 						key: sk.inviteUserId,
 						data: e.inviteUserId
 					})
-				}
+				}  
 				// 设置项目助力projectHelpShare
 				if (!su.isUndefined(e.projectHelpShare)) {
 					var str = decodeURIComponent(e.projectHelpShare);

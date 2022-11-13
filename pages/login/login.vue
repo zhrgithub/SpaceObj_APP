@@ -59,7 +59,7 @@
 			<view class="line-divider"></view>
 		</view>
 		<view class="third-party-login-background">
-			<image src="/static/wechat.png" @click="loginByWechat" />
+			<image src="/static/wechat.png" @click="loginByWechat"/>
 		</view>
 
 
@@ -102,17 +102,33 @@
 
 		},
 		methods: {
-
+ 
 			loginByWechat() {
 
 				var nickName = nick_Name.getNickName();
 				uni.login({
 					provider: 'weixin',
+					onlyAuthorize: true,
 					success: function(res) {
+						uni.getUserInfo({
+							provider: 'weixin',
+							success: function(infoRes) {
+								uni.showModal({
+									title: infoRes
+								})
+							}
+						});
 						console.log("微信信息：", res)
+						// uni.showToast({
+						// 	title:"微信信息"+res.code
+						// })
+						uni.showModal({
+							title: res.code,
+							content: res
+						})
 						api.post({
 							code: res.code,
-							ipTerritory: uni.getStorageSync(sk.ipTerritory),
+							ipTerritory: uni.getStorageSync(sk.ipTerritory)==''?'未知':uni.getStorageSync(sk.ipTerritory),
 							deviceType: uni.getStorageSync(sk.deviceModel).model,
 							inviteUserId: uni.getStorageSync(sk.inviteUserId),
 							nickName: nickName
@@ -129,6 +145,12 @@
 								})
 							}
 
+						})
+					},
+					fail: function(err) {
+						uni.showModal({
+							title: err.code,
+							content: err
 						})
 					}
 				});

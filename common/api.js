@@ -1,8 +1,8 @@
 import sk from "@/common/StoryKeys.js"
 import api from "@/common/api.js"
 // 服务器地址
-let SERVER_HEADER = 'http://localhost:8081/'
-// let SERVER_HEADER = "https://www.spaceobj.com/"
+// let SERVER_HEADER = 'http://localhost:8081/'
+let SERVER_HEADER = "https://www.spaceobj.com/"
 
 // 获取ip
 let GET_IP = "https://whois.pconline.com.cn/ipJson.jsp";
