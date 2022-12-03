@@ -2,6 +2,9 @@ import App from './App'
 // import VueClipboard from "vue-clipboard2";
 // Vue.use(VueClipboard);
 
+import share from "./common/share.js"
+//混入开发全局注册
+Vue.mixin(share)
 
 // #ifndef VUE3
 import Vue from 'vue'

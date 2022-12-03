@@ -19,7 +19,7 @@
 			</view>
 			<view class="uni-dialog-button uni-border-left" @click="onOk">
 				<!-- <text class="uni-dialog-button-text uni-button-color">{{okText}}</text> -->
-				<button open-type="share">{{okText}}</button>
+				<button open-type="share" data-name="helpProjectFriend">{{okText}}</button>
 			</view>
 		</view> 
 

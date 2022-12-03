@@ -47,7 +47,7 @@
 		<view class="space-line-style">
 		</view>
 		<view class="btn-background-style" v-if="online==1">
-			<button @click="getUserInfo">立即联系</button>
+			<button @click="getUserInfo" >立即联系</button>
 
 		</view>
 
@@ -93,14 +93,14 @@
 			that.projectObj = obj;
 			that.addViews(obj);
 		},
-		onShareAppMessage(res) {
-			if (res.from === 'button') { // 来自页面内分享按钮
-			}
-			return {
-				title: '欢迎体验spaceObj，项目大厅入口',
-				path: 'pages/index/index?projectHelpShare=' + encodeURIComponent(JSON.stringify(that.projectHelp))
-			}
-		},
+		// onShareAppMessage(res) {
+		// 	if (res.from === 'button') { // 来自页面内分享按钮
+		// 	}
+		// 	return {
+		// 		title: '欢迎体验spaceObj，项目大厅入口',
+		// 		path: 'pages/index/index?projectHelpShare=' + encodeURIComponent(JSON.stringify(that.projectHelp))
+		// 	}
+		// },
 		methods: {
 			copyPid(e) {
 				uni.setClipboardData({
@@ -208,6 +208,10 @@
 
 					if (res.code == 200) {
 						that.projectHelp = res.data;
+						uni.setStorage({
+							key:sk.projectHelpShare,
+							data:res.data
+						})
 					}
 				});
 			},

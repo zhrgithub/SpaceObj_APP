@@ -59,7 +59,7 @@
 				{{invitationValue}}
 			</view>
 			<view class="invite-btn-stye">
-				<button data-name="shareBtn" open-type="share">邀请好友</button>
+				<button data-name="inviteFriend" open-type="share">邀请好友</button>
 			</view>
 		</view>
 		<view class="invite-hint-background" v-if="loginStatus&&online==1">
@@ -89,7 +89,7 @@
 		</view>
 
 		<!-- 联系客服 -->
-		<view class="invite-value-background-style">
+		<view class="invite-value-background-style" v-if="online==1">
 			<view class="link-us-style">
 				客服微信
 			</view>
@@ -99,7 +99,7 @@
 			</view>
 		</view>
 		<!-- 下载 -->
-		<view class="invite-value-background-style">
+		<view class="invite-value-background-style" v-if="online==1">
 			<view class="link-us-style">
 				APP
 			</view>
@@ -175,14 +175,15 @@
 		created() {
 			that = this;
 		},
-		onShareAppMessage(res) {
-			if (res.from === 'button') { // 来自页面内分享按钮
-			}
-			return {
-				title: '欢迎体验spaceObj，项目大厅入口',
-				path: 'pages/index/index?inviteUserId=' + that.userId
-			}
-		},
+		// onShareAppMessage(res) {
+		// 	console.log("1111111")
+		// 	if (res.from === 'button') { // 来自页面内分享按钮
+		// 	}
+		// 	return {
+		// 		title: '欢迎体验spaceObj，项目大厅入口',
+		// 		path: 'pages/index/index?inviteUserId=' + that.userId
+		// 	}
+		// },
 		onLoad() {
 
 		},

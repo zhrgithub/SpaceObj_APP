@@ -2,14 +2,14 @@
 	<view class="container">
 		<view class="login-background-style" @click="editPhoto">
 			<view class="userinfo-background-style">
-				修改头像
+				头像
 			</view>
 			<view class="photo-image-background-style">
 				<image :src="photoUrl" mode=""></image>
 			</view>
 		</view>
 
-		<view class="edit-background-style">
+		<view class="edit-background-style" v-if="online">
 			<view class="change-tips">
 				昵称
 			</view>
@@ -110,7 +110,7 @@
 
 
 		<view class="save-btn-style">
-			<button @click="logout">退出登录</button> <button @click="saveUserInfo">保存</button>
+			<button @click="logout">退出登录</button> <button v-if="online==1" @click="saveUserInfo">保存</button>
 		</view>
 
 		<uni-popup ref="popup" background-color="#fff">
@@ -221,6 +221,9 @@
 			},
 
 			editPhoto() {
+				if(that.online==0){
+					return;
+				}
 				this.$refs.popup.open('bottom');
 				api.post({
 
