@@ -98,7 +98,8 @@
 	let that;
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
-	import strigUtils from '@/utils/StringUtils.js'
+	import su from '@/utils/StringUtils.js'
+	import config from '@/common/config.js'
 	export default {
 		data() {
 			return {
@@ -112,23 +113,42 @@
 				jdAdPrice: null, //商品价格
 				jdAdStoreName: null, //商家名称
 				operationType: null, //操作类型：0表示修改，1表示新增，默认为null
-				online:0,
+				online: 0,
 			}
 		},
 		created() {
 			that = this;
 		},
 		onShow() {
-			
 			var otherInfo = uni.getStorageSync(sk.otherInfo);
-			
-			that.online = otherInfo.online;
-			if(that.online==0){
+			if (su.isBlank(otherInfo)) {
+				// 获取其它
+				api.post({}, api.getOther).then(res => {
+					console.log(res)
+					var data = res.data;
+					var version = res.data.version;
+					// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
+					if (version == config.system_version) {
+						data.online = 1;
+					} else {
+						data.online = 0;
+					}
+					that.online = data.online;
+					uni.setStorage({
+						key: sk.otherInfo,
+						data: data,
+					})
+				})
+			} else {
+				console.log(otherInfo)
+				that.online = otherInfo.online;
+			}
+			if (that.online == 0) {
 				uni.switchTab({
 					url: '/pages/project/project'
 				})
 			}
-			
+
 			that.loadList();
 		},
 		methods: {
@@ -158,7 +178,7 @@
 
 				}, api.jdList).then(res => {
 					that.list = res.data;
-					
+
 				});
 			},
 			editAdvertise(e) {
@@ -210,8 +230,8 @@
 						})
 					}
 				});
-				
-				
+
+
 			},
 			submit() {
 				// 判断是新增还是修改
@@ -346,7 +366,8 @@
 		height: 100%;
 		position: absolute;
 	}
-	.discount-description-style{
+
+	.discount-description-style {
 		font-size: 12px;
 		width: 100%;
 		overflow: hidden;

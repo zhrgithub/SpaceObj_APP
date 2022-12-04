@@ -2,12 +2,14 @@
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
 	import su from '@/utils/StringUtils.js'
+	
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
 		},
 		onShow: function() {
 			console.log('App Show')
+			
 			// 获取广告
 			api.post({
 

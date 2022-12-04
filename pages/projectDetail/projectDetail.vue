@@ -47,7 +47,7 @@
 		<view class="space-line-style">
 		</view>
 		<view class="btn-background-style" v-if="online==1">
-			<button @click="getUserInfo" >立即联系</button>
+			<button @click="getUserInfo">立即联系</button>
 
 		</view>
 
@@ -64,6 +64,7 @@
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
 	import su from '@/utils/StringUtils.js'
+	import config from '@/common/config.js'
 	export default {
 		data() {
 			return {
@@ -85,7 +86,29 @@
 			that = this;
 		},
 		onShow() {
-			that.online = uni.getStorageSync(sk.otherInfo).online;
+			var otherInfo = uni.getStorageSync(sk.otherInfo);
+			if (su.isBlank(otherInfo)) {
+				// 获取其它
+				api.post({}, api.getOther).then(res => {
+					console.log(res)
+					var data = res.data;
+					var version = res.data.version;
+					// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
+					if (version == config.system_version) {
+						data.online = 1;
+					} else {
+						data.online = 0;
+					}
+					that.online = data.online;
+					uni.setStorage({
+						key: sk.otherInfo,
+						data: data,
+					})
+				})
+			} else {
+				console.log(otherInfo)
+				that.online = otherInfo.online;
+			}
 		},
 		onLoad(e) {
 			var str = decodeURIComponent(e.obj);
@@ -209,8 +232,8 @@
 					if (res.code == 200) {
 						that.projectHelp = res.data;
 						uni.setStorage({
-							key:sk.projectHelpShare,
-							data:res.data
+							key: sk.projectHelpShare,
+							data: res.data
 						})
 					}
 				});

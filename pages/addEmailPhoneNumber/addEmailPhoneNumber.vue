@@ -31,8 +31,9 @@
 	var that;
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
-	import strigUtils from '@/utils/StringUtils.js'
+	import su from '@/utils/StringUtils.js'
 	import nick_Name from '@/utils/nickName.js'
+	import config from '@/common/config.js'
 	export default {
 		data() {
 			return {
@@ -44,27 +45,45 @@
 				account: "未知",
 				realNameStatus: '未实名',
 				email: '',
-				online:0,
+				online: 0,
 			}
 		},
 		onShow() {
-			
-			
 			var otherInfo = uni.getStorageSync(sk.otherInfo);
-			
-			that.online = otherInfo.online;
-			if(that.online==0){
+			if(su.isBlank(otherInfo)){
+				// 获取其它
+				api.post({}, api.getOther).then(res => {
+					console.log(res)
+					var data = res.data;
+					var version = res.data.version;
+					// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
+					if (version == config.system_version) {
+						data.online = 1;
+					} else {
+						data.online = 0;
+					}
+					that.online = data.online;
+					uni.setStorage({
+						key: sk.otherInfo,
+						data: data,
+					})
+				})
+			}else{
+				console.log(otherInfo)
+				that.online =otherInfo.online;
+			}
+			if (that.online == 0) {
 				uni.switchTab({
 					url: '/pages/project/project'
 				})
 			}
 			this.timer = setTimeout(() => {
 				var userInfo = uni.getStorageSync(sk.userInfo);
-				that.email = strigUtils.isBlank(userInfo.email) ? that.email : userInfo.email;
-				that.phoneNumber = strigUtils.isBlank(userInfo.phoneNumber) ? that.phoneNumber : userInfo
+				that.email = su.isBlank(userInfo.email) ? that.email : userInfo.email;
+				that.phoneNumber = su.isBlank(userInfo.phoneNumber) ? that.phoneNumber : userInfo
 					.phoneNumber;
-					
-					
+
+
 			}, 200)
 
 		},
@@ -83,8 +102,8 @@
 			saveUserInfo() {
 				var nickName = nick_Name.getNickName();
 
-				
-				if (that.phoneNumber.length ==0) {
+
+				if (that.phoneNumber.length == 0) {
 					uni.showToast({
 						icon: 'none',
 						title: "设置QQ/微信/手机号"
@@ -106,7 +125,7 @@
 					ipTerritory: uni.getStorageSync(sk.ipTerritory),
 					nickName: nickName
 				}, api.customerUpdateUserInfo).then(res => {
-					
+
 					if (res.code == 200) {
 						// 设置用户信息
 						uni.setStorage({

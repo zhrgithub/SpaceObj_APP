@@ -17,7 +17,6 @@
 			}
 		},
 		onLoad(e) {
-
 			if (!su.isBlank(e)) {
 				// 设置邀请人id
 				if (!su.isUndefined(e.inviteUserId)) {
@@ -40,6 +39,7 @@
 		},
 		onShow() {
 			api.post({}, api.getOther).then(res => {
+				console.log(res)
 				var data = res.data;
 				var version = res.data.version;
 				// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
@@ -48,7 +48,6 @@
 				} else {
 					data.online = 0;
 				}
-
 				uni.setStorage({
 					key: sk.otherInfo,
 					data: data,
@@ -58,8 +57,6 @@
 						})
 					}
 				})
-				
-
 			})
 		},
 		created() {

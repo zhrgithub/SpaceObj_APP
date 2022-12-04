@@ -129,7 +129,7 @@
 	let that;
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
-	import strigUtils from '@/utils/StringUtils.js'
+	import su from '@/utils/StringUtils.js'
 	export default {
 		data() {
 			return {

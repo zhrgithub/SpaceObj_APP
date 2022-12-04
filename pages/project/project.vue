@@ -193,6 +193,8 @@
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
 	import su from '@/utils/StringUtils.js'
+	import config from '@/common/config.js'
+	
 	export default {
 		data() {
 			return {
@@ -227,13 +229,35 @@
 		},
 		onShow() {
 			var otherInfo = uni.getStorageSync(sk.otherInfo);
-			that.online = otherInfo.online;
+			if(su.isBlank(otherInfo)){
+				// 获取其它
+				api.post({}, api.getOther).then(res => {
+					console.log(res)
+					var data = res.data;
+					var version = res.data.version;
+					// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
+					if (version == config.system_version) {
+						data.online = 1;
+					} else {
+						data.online = 0;
+					}
+					that.online = data.online;
+					uni.setStorage({
+						key: sk.otherInfo,
+						data: data,
+					})
+				})
+			}else{
+				console.log(otherInfo)
+				that.online =otherInfo.online;
+			}
+	
 
 
 			that.shopList = uni.getStorageSync(sk.shopList);
 			var userInfo = uni.getStorageSync(sk.userInfo);
 			that.userInfo = userInfo;
-			// 校验用户是否登录
+			// 校验用户是否登录 
 			var loginStatus = uni.getStorageSync(sk.loginStatus);
 			if (loginStatus) {
 				// 登录成功，帮助好友更新项目助力信息

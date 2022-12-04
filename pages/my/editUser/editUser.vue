@@ -130,7 +130,8 @@
 	var that;
 	import sk from '@/common/StoryKeys.js'
 	import api from '@/common/api.js'
-	import strigUtils from '@/utils/StringUtils.js'
+	import su from '@/utils/StringUtils.js'
+	import config from '@/common/config.js'
 	export default {
 		data() {
 			return {
@@ -154,7 +155,29 @@
 			that.deviceModel = uni.getStorageSync(sk.deviceModel);
 			that.loadUserInfo();
 			// 加载是否上线信息
-			that.online = uni.getStorageSync(sk.otherInfo).online;
+			var otherInfo = uni.getStorageSync(sk.otherInfo);
+			if(su.isBlank(otherInfo)){
+				// 获取其它
+				api.post({}, api.getOther).then(res => {
+					console.log(res)
+					var data = res.data;
+					var version = res.data.version;
+					// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
+					if (version == config.system_version) {
+						data.online = 1;
+					} else {
+						data.online = 0;
+					}
+					that.online = data.online;
+					uni.setStorage({
+						key: sk.otherInfo,
+						data: data,
+					})
+				})
+			}else{
+				console.log(otherInfo)
+				that.online =otherInfo.online;
+			}
 
 
 		},
@@ -167,12 +190,12 @@
 
 				that.userInfo = userInfo;
 				console.log(that.userInfo);
-				that.photoUrl = strigUtils.isBlank(userInfo.photoUrl) ? that.photoUrl : userInfo.photoUrl;
-				that.nickName = strigUtils.isBlank(userInfo.nickName) ? that.nickName : userInfo.nickName;
-				that.phoneNumber = strigUtils.isBlank(userInfo.phoneNumber) ? that.phoneNumber : userInfo
+				that.photoUrl = su.isBlank(userInfo.photoUrl) ? that.photoUrl : userInfo.photoUrl;
+				that.nickName = su.isBlank(userInfo.nickName) ? that.nickName : userInfo.nickName;
+				that.phoneNumber = su.isBlank(userInfo.phoneNumber) ? that.phoneNumber : userInfo
 					.phoneNumber;
-				that.account = strigUtils.isBlank(userInfo.account) ? that.account : userInfo.account;
-				that.email = strigUtils.isBlank(userInfo.email) ? that.email : userInfo.email;
+				that.account = su.isBlank(userInfo.account) ? that.account : userInfo.account;
+				that.email = su.isBlank(userInfo.email) ? that.email : userInfo.email;
 				that.realNameStatus = userInfo.realNameStatus != 1 ? '未实名' : '已实名';
 				that.ipTerritory = userInfo.ipTerritory;
 				that.openId = userInfo.openId;
@@ -221,7 +244,7 @@
 			},
 
 			editPhoto() {
-				if(that.online==0){
+				if (that.online == 0) {
 					return;
 				}
 				this.$refs.popup.open('bottom');
@@ -265,21 +288,21 @@
 
 			},
 			saveUserInfo() {
-				if (strigUtils.isBlank(that.phoneNumber)) {
+				if (su.isBlank(that.phoneNumber)) {
 					uni.showToast({
 						icon: 'none',
 						title: "联系方式不正确"
 					})
 					return;
 				}
-				if (strigUtils.isBlank(that.nickName)) {
+				if (su.isBlank(that.nickName)) {
 					uni.showToast({
 						icon: 'none',
 						title: '未设置昵称'
 					})
 					return;
 				}
-				if (strigUtils.isBlank(that.email)) {
+				if (su.isBlank(that.email)) {
 					uni.showToast({
 						icon: 'none',
 						title: '未设置邮箱'

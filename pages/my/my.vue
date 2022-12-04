@@ -155,7 +155,8 @@
 	import app from '@/App.vue'
 	import api from '@/common/api.js'
 	import sk from '@/common/StoryKeys.js'
-	import strigUtils from '@/utils/StringUtils.js'
+	import su from '@/utils/StringUtils.js'
+	import config from '@/common/config.js'
 	export default {
 		data() {
 			return {
@@ -200,10 +201,33 @@
 				}
 				// 第二步加载其它信息
 				var otherInfo = uni.getStorageSync(sk.otherInfo);
+				if (su.isBlank(otherInfo)) {
+					// 获取其它
+					api.post({}, api.getOther).then(res => {
+						console.log(res)
+						var data = res.data;
+						var version = res.data.version;
+						// 判断后端传递过来的版本号和当前APP的版本号是否一致，如果不一致，就设置上线状态为0，一致则设置为1
+						if (version == config.system_version) {
+							data.online = 1;
+						} else {
+							data.online = 0;
+						}
+						that.online = data.online;
+						uni.setStorage({
+							key: sk.otherInfo,
+							data: data,
+						})
+					})
+				} else {
+					console.log(otherInfo)
+					that.online = otherInfo.online;
+				}
+
+				otherInfo = uni.getStorageSync(sk.otherInfo);
 
 				that.downloadUrl = otherInfo.downloadUrl;
 				that.wechat = otherInfo.wechat;
-				that.online = otherInfo.online;
 			}, 200)
 		},
 		methods: {
@@ -230,10 +254,10 @@
 						userInfo = res.data;
 					}
 					if (userInfo != '') {
-						that.userType = strigUtils.isBlank(userInfo.userType) ? '' : userInfo.userType;
-						that.photoUrl = strigUtils.isBlank(userInfo.photoUrl) ? "/static/photo.png" : userInfo
+						that.userType = su.isBlank(userInfo.userType) ? '' : userInfo.userType;
+						that.photoUrl = su.isBlank(userInfo.photoUrl) ? "/static/photo.png" : userInfo
 							.photoUrl;
-						that.nickName = strigUtils.isBlank(userInfo.nickName) ? that.nickName : userInfo.nickName;
+						that.nickName = su.isBlank(userInfo.nickName) ? that.nickName : userInfo.nickName;
 						that.invitationValue = userInfo.invitationValue;
 						that.realNameStatus = userInfo.realNameStatus;
 						that.ipTerritory = userInfo.ipTerritory;
