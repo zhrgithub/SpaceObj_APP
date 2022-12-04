@@ -33,7 +33,6 @@
 						key: sk.projectHelpShare,
 						data: projectHelpShare
 					})
-
 				}
 			}
 		},
