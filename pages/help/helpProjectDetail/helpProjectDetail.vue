@@ -160,6 +160,7 @@
 				})
 			},
 			getUserInfo() {
+				
 				api.post({
 					uuid: that.projectHelp.puuid,
 				}, api.getPhoneNumberByProjectId).then(res => {
