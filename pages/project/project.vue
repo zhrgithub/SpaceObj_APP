@@ -448,6 +448,13 @@
 			},
 
 			toProjecDetail(e) {
+				var userinfo = uni.getStorageSync(sk.userInfo);
+				if(su.isBlank(userinfo)){
+					uni.navigateTo({
+						url: '/pages/login/login'
+					})
+					return;
+				}
 				uni.navigateTo({
 					url: '/pages/projectDetail/projectDetail?obj=' + encodeURIComponent(JSON.stringify(e))
 				})
