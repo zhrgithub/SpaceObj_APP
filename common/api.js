@@ -27,9 +27,9 @@ let OTHER = SERVER_HEADER + "spaceobj-user/"
 
 
 function post(data, url) {
-	if(url!=api.getUserInfo){
+	if(url==api.login||url==api.loginByWechat){
 		uni.showLoading({
-			title: '加载中...'
+			title: '登录中...'
 		})
 	}
 	var token = uni.getStorageSync(sk.token);
@@ -81,9 +81,11 @@ function post(data, url) {
 }
 
 function postJson(data, url) {
-	uni.showLoading({
-		title: '加载中...'
-	})
+	if(url==api.login||url==api.loginByWechat){
+		uni.showLoading({
+			title: '登录中...'
+		})
+	}
 	var token = uni.getStorageSync(sk.token);
 	console.log("请求接口", url);
 	return uni.request({
@@ -127,9 +129,11 @@ function postJson(data, url) {
 }
 
 function get(data, url) {
-	uni.showLoading({
-		title: '加载中...'
-	})
+	if(url==api.login||url==api.loginByWechat){
+		uni.showLoading({
+			title: '登录中...'
+		})
+	}
 	console.log("请求接口", url);
 	return uni.request({
 		url: url,

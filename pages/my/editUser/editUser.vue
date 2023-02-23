@@ -70,14 +70,14 @@
 			</view>
 		</view>
 
-		<view class="edit-background-style" v-if="online==1">
+		<!-- <view class="edit-background-style" v-if="online==1">
 			<view class="change-tips">
 				设备
 			</view>
 			<view class="change-input-style">
 				{{deviceModel.deviceModel}}
 			</view>
-		</view>
+		</view> -->
 
 		<!-- <view class="edit-background-style">
 			<view class="change-tips">
@@ -87,14 +87,14 @@
 				{{userInfo.ip}}
 			</view>
 		</view> -->
-		<view class="edit-background-style" v-if="online==1">
+		<!-- <view class="edit-background-style" v-if="online==1">
 			<view class="change-tips">
 				操作系统
 			</view>
 			<view class="change-input-style">
 				{{deviceModel.system}}
 			</view>
-		</view>
+		</view> -->
 		<!-- <view class="edit-background-style" v-if="online==1">
 			<view class="change-tips">
 				电池电量
@@ -323,7 +323,9 @@
 							key: sk.userInfo,
 							data: res.data
 						})
+						uni.navigateBack();
 					}
+					
 					uni.showToast({
 						icon: 'none',
 						title: res.msg
