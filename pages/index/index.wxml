@@ -1,4 +1,0 @@
-<!--index.wxml-->
-  <view class="space-obj-background-style">
-		<image src="/static/index.png" mode=""></image>
-	</view>
