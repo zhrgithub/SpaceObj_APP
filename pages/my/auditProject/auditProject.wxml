@@ -1,0 +1,41 @@
+<view class="release-background-style">
+
+<!-- 搜索框 -->
+<view class="search-background-style">
+  <view class="search-logo-background-style">
+    <view class="image-background-style">
+      <image src="/static/searchInput.png" mode=""></image>
+    </view>
+    <view class="input-background-style">
+      <input :value="seachText" type="text" maxlength="15" placeholder="项目编号、项目内容、发布人昵称、用户id"
+        placeholder-style="font-size:14px" confirm-type="search" bindconfirm="doSearch" bindinput="inputText"/>
+      <image src="/static/deleteSearch.png" bindtap="clearInput"/>
+    </view>
+  </view>
+
+</view>
+<view class="top-space-line-style"></view>
+
+<!-- 发布的列表 -->
+<view class="project-list-style" bindtap="toAuditProjectDetail(item)" v-for="(item,idx) in list" :key="idx">
+  <view class="date-status-style">
+    <view class="date-style">
+      {{timeStampTurnTime(item.createTime)}}
+    </view>
+    <view class="status-style">
+      {{getAuditStatus(item.status)}}
+    </view>
+    <view class="status-style" bindtap="toAuditProjectDetail(item)">
+      查看详情
+    </view>
+  </view>
+  <view class="brief-information-style">
+    项目描述：{{item.content}}
+  </view>
+</view>
+
+
+
+
+
+</view>

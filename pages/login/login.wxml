@@ -1,0 +1,16 @@
+<view class="container">
+		<view class="logo-background-style">
+			SpaceObj
+		</view>
+
+
+    
+		<!-- 登录、注册、重置密码按钮 -->
+		<view class="login-background-style">
+      <view class="login-btn-style" bindtap="loginByWechat">一键登录</view>
+		</view>
+		
+	
+
+
+	</view>

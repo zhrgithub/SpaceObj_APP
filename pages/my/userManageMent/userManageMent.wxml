@@ -1,0 +1,121 @@
+<view class="container">
+
+  <!-- 搜索框 -->
+  <view class="search-background-style">
+    <view class="search-logo-background-style">
+      <view class="image-background-style">
+        <image src="/static/searchInput.png" mode=""></image>
+      </view>
+      <view class="input-background-style">
+        <input :value="seachText" type="text" maxlength="15" placeholder="电话、昵称、邮箱、名称、身份证、属地" placeholder-style="font-size:14px" confirm-type="search" bindconfirm="doSearch" bindinput="inputText" />
+        <image src="/static/deleteSearch.png" bindtap="clearInput" />
+      </view>
+    </view>
+  </view>
+  <view class="top-space-line-style"></view>
+
+
+  <view class="photo-image-btn-background-style" v-for="(item,idx) in list" :key="idx">
+    <view class="photo-image-background-style">
+      <image :src="item.photoUrl==null?'/static/photo.png':item.photoUrl" mode=""></image>
+      <view class="base-info-panel-style">
+        <view class="phone-background-style">
+          <text>{{item.nickName}}</text>
+          <text v-if="item.disableStatus==0" style="margin-left: 20rpx;color: #49A8E7;">正常</text>
+          <text v-if="item.disableStatus==1" style="margin-left: 20rpx;color: gray;">冻结</text>
+          <text v-if="item.onlineStatus==1" style="margin-left: 20rpx;color: seagreen;">已登录</text>
+          <text v-if="item.onlineStatus==0" style="margin-left: 20rpx;color: gray;">未登录</text>
+        </view>
+        <view class="phone-background-style">
+          {{item.ipTerritory}}
+        </view>
+      </view>
+    </view>
+    <view class="btn-background-style">
+      <button bindtap="editUser(item)">编辑</button>
+    </view>
+  </view>
+
+
+
+  <uni-popup ref="popup" background-color="#fff">
+    <view class="need-description-budget-style">
+      基本信息
+    </view>
+    <view class="scroll-item-line-two-style"></view>
+    <view class="description-doller-style">
+      <view class="edit-background-style">
+        <view class="change-tips">
+          用户名
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="请输入用户名" :value="userObj.username" bindinput="setUserName" />
+        </view>
+      </view>
+      <view class="edit-background-style">
+        <view class="change-tips">
+          昵称
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="设置昵称" :value="userObj.nickName" bindinput="setNickName" />
+        </view>
+      </view>
+      <view class="edit-background-style">
+        <view class="change-tips">
+          实名状态
+        </view>
+        <view class="change-input-style">
+          <input type="text" disabled="true" :value="userObj.realNameStatus==0?'未实名':'已实名'"/>
+        </view>
+      </view>
+      <view class="edit-background-style">
+        <view class="change-tips">
+          联系方式
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="请输入联系方式" :value="userObj.phoneNumber" bindinput="setPhoneNumber"/>
+        </view>
+      </view>
+      <view class="edit-background-style">
+        <view class="change-tips">
+          邮箱
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="请输入邮箱" :value="userObj.email" bindinput="setEmail"/>
+        </view>
+      </view>
+      <view class="edit-background-style">
+        <view class="change-tips">
+          邀请值
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="请设置邀请值" :value="userObj.invitationValue" bindinput="setInvitationValue"/>
+        </view>
+      </view>
+
+      <view class="edit-background-style">
+        <view class="change-tips">
+          ip属地
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="归属地" disabled="true" :value="userObj.ipTerritory"/>
+        </view>
+      </view>
+      <view class="edit-background-style">
+        <view class="change-tips">
+          用户状态
+        </view>
+        <view class="change-input-style">
+          <input type="text" placeholder="用户状态" disabled="true" :value="userObj.disableStatus==0?'正常':'冻结'"/>
+
+          <switch color="#49A8E7" bindchange="disabledUser" :checked="userObj.disableStatus==0" />
+        </view>
+      </view>
+
+      <view class="button-background">
+        <!-- <button bindtap="disabledUser">冻结</button> -->
+        <button bindtap="save">保存</button>
+      </view>
+    </view>
+  </uni-popup>
+</view>

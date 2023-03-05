@@ -1,0 +1,44 @@
+<view class="project-detail-background-style">
+
+<view class="base-info-panel-style">
+  <view class="project-num-status-style">
+    <view class="project-numer-style">
+      项目编号：{{projectObj.pid}}
+    </view>
+    <view class="project-status-style">
+      状态：{{getAuditStatus(projectObj.status)}}
+    </view>
+  </view>
+
+  <view class="project-num-status-style">
+    <view class="project-numer-style">
+      预算：{{projectObj.price}}元
+    </view>
+    <view class="project-status-style">
+      浏览：{{projectObj.pageViews}}次
+    </view>
+  </view>
+
+  <view class="project-num-status-style">
+    <view class="project-numer-style">
+      IP属地：{{projectObj.ipAddress}}
+    </view>
+    <view class="project-numer-style">
+      用户：{{projectObj.nickname}}
+    </view>
+  </view>
+</view>
+
+
+
+<view class="description-requirement-style">
+  <view class="description-content-style">
+    项目描述：{{projectObj.content}}
+  </view>
+
+</view>
+<view class="btn-background-style">
+  <button bindtap="refuse">拒绝</button>
+  <button bindtap="approve">通过</button>
+</view>
+</view>

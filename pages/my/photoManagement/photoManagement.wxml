@@ -1,0 +1,13 @@
+<view class="container">
+		<view class="photo-image-btn-background-style" v-for="(item,idx) in photoList" :key="idx">
+			<view class="photo-image-background-style">
+				<image :src="item.photoUrl" mode=""></image>
+			</view>
+			<view class="btn-background-style">
+				<button bindtap="editPhoto(item)">编辑</button>
+			</view>
+		</view>
+
+
+		<view class="click-release-style" bindtap="addPhoto">添加</view>
+	</view>

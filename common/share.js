@@ -1,4 +1,4 @@
-import sk from '@/common/StoryKeys.js'
+import sk from './common/StoryKeys.js'
 export default {
 	onShareAppMessage(res) {
 

@@ -1,0 +1,27 @@
+<view class="container" v-if="online==1">
+		<view class="base-infos">
+			<view class="base-infos-style">
+				<input placeholder="请输入您的真实姓名(必填)" :value="username" maxlength="15" bindinput="setUserName"></input>
+			</view>
+			<view class="base-infos-style-two">
+				<input placeholder="请输入您的身份证号码(必填)" :value="idCardNum" maxlength="18" type="number"
+					bindinput="setIdCardNumber"></input>
+			</view>
+		</view>
+
+		<view class="id-card-style" bindtap="uploadImageItem">
+			<view class="image-background-one"
+				v-if="idCardPic==''||idCardPic==null||idCardPic=='null'||idCardPic.length==0">
+				<image src="/static/camera.png"></image>
+				<view class="image-title">身份证正面(必填)</view>
+			</view>
+			<block class="image-background-two"
+				v-if="idCardPic!=''&&idCardPic!=null&&idCardPic!='null'&&idCardPic.length!=0">
+				<img :src="idCardPic" style="width:100%;height:100%;margin-left:0%;border-radius: 20rpx;" />
+			</block>
+		</view>
+
+		<view class="button-background" v-if="realNameStatus==0||realNameStatus==3">
+			<button bindtap="submit">提交</button>
+		</view>
+	</view>
