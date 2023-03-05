@@ -1,0 +1,71 @@
+<!-- <view class="container">
+
+<view class="search-background-style">
+  <view class="select-duration-background-select">
+    时间范围：
+    <picker mode="date" :value="fromDate" :start="startDate" :end="endDate" @change="bindDateChange">
+      <view class="uni-input">{{fromDate}}</view>
+    </picker>
+    至
+    <picker mode="date" :value="toDate" :start="startDate" :end="endDate" @change="toBindDateChange">
+      <view class="uni-input">{{toDate}}</view>
+    </picker>
+  </view>
+  <view class="select-duration-background-select">
+    类型：
+    <picker @change="bindPickerChange" :value="index" :range="array">
+      <view class="uni-input">{{array[index]}}</view>
+    </picker>
+    名称：
+    <input type="text" placeholder="日志名称" confirm-type="search" @confirm="doSearch">
+
+  </view>
+
+</view>
+
+<view class="space-line-style">
+
+</view>
+<view class="log-background" @click="toLogDetail">
+  <view class="model-one-style">
+    <view class="log-type-style">
+      日志类型：业务日志
+    </view>
+    <view class="log-name-style">
+      日志名称：用户登录
+    </view>
+  </view>
+
+  <view class="model-one-style">
+    <view class="log-type-style">
+      用户id：001
+    </view>
+    <view class="log-name-style">
+      2022-03-29 23:28:24
+    </view>
+  </view>
+  <view class="model-one-style">
+    <view class="log-name-style">
+      类名：cn.stylefeng.guns.sys.modular.system.modular.system.modular.system.
+    </view>
+    <view class="log-name-style">
+      方法名：about
+    </view>
+  </view>
+  <view class="model-one-style">
+    <view class="log-name-style">
+      ip：192.323.23.23
+    </view>
+
+    <view class="log-name-style">
+      具体内容：空指针异常
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+</view> -->

@@ -1,0 +1,154 @@
+	.button-space {
+		width: 10%;
+	}
+
+	.description-doller-style {
+		width: 100%;
+		height: 1100rpx;
+	}
+
+	.doller-num-style {
+		width: 90%;
+		height: 80rpx;
+		margin-left: 5%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		margin-top: 30rpx;
+		border-radius: 10px;
+	}
+
+	.doller-num-style input {
+		width: 90%;
+		height: 100%;
+	}
+
+	.description-style {
+		width: 90%;
+		margin-left: 5%;
+		display: flex;
+		margin-top: 30rpx;
+		margin-bottom: 30rpx;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		border-radius: 10px;
+		height: 320rpx;
+	}
+
+	.description-style textarea {
+		width: 96%;
+		margin-top: 20rpx;
+		margin-left: 2%;
+		height: 280rpx;
+	}
+
+	.button-style {
+		width: 90%;
+		margin-left: 5%;
+		height: 150rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		position: fixed;
+		bottom: 10rpx;
+	}
+
+	.button-style button {
+		width: 40%;
+		background-color: #49A8E7;
+		color: white;
+	}
+
+	.need-description-budget-style {
+		width: 100%;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 80rpx;
+	}
+
+	.scroll-item-line-two-style {
+		width: 100%;
+		border-top: 1rpx solid #e1e1e1;
+		content: '';
+	}
+
+	.project-detail-background-style {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.base-info-panel-style {
+		width: 96%;
+		margin-left: 2%;
+		height: 300rpx;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		margin-top: 50rpx;
+		border-radius: 10px;
+	}
+
+	.project-num-status-style {
+		width: 90%;
+		margin-left: 5%;
+		height: 95rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 14px;
+	}
+
+	.project-numer-style {
+		width: 50%;
+		text-align: left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.description-requirement-style {
+		width: 96%;
+		margin-left: 2%;
+		margin-top: 50rpx;
+		border-radius: 10rpx;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.description-content-style {
+		width: 90%;
+		margin-top: 30rpx;
+		font-size: 15px;
+		margin-bottom: 30rpx;
+	}
+
+	.btn-background-style {
+		height: 120rpx;
+		position: fixed;
+		bottom: 0rpx;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #fff;
+	}
+
+	.btn-background-style button {
+		width: 96%;
+		margin-left: 2%;
+		background-color: #49A8E7;
+		color: white;
+		height: 80rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.space-line-style {
+		width: 100%;
+		height: 200rpx;
+	}

@@ -1,0 +1,404 @@
+	.tips-background-style {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 28rpx;
+		font-size: 12px;
+		color: #bfbfbf;
+	}
+
+	.advertise-project-list {
+		width: 100%;
+		height: auto;
+	}
+
+	/* 广告插入 */
+	.swiper {
+		height: 100%;
+		width: 100%;
+	}
+
+
+	.swiper-item {
+		display: block;
+		height: 100%;
+		line-height: 100%;
+		text-align: center;
+		border: 1rpx solid black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: green;
+	}
+
+	.commodity-image-description-background-style {
+		width: 98%;
+		margin-left: 1%;
+		height: 98%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 2.5%;
+	}
+
+	.commodity-image-background-style {
+		width: 25%;
+		height: 98%;
+	}
+
+	.commodity-image-background-style image {
+		height: 160rpx;
+		width: 160rpx;
+	}
+
+	.description-background-style {
+		width: 75%;
+		height: 100%;
+	}
+
+	.title-description-style {
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: black;
+		font-size: 14px;
+		white-space: nowrap;
+	}
+
+	.price-good-diss-style {
+		display: flex;
+		color: red;
+		font-size: 15px;
+		font-weight: bold;
+	}
+
+	.price-num-style {
+		width: 40%;
+		display: flex;
+		justify-content: left;
+		align-items: center;
+	}
+
+	.good-diss-style {
+		width: 30%;
+		font-size: 12px;
+		color: grey;
+		display: flex;
+		justify-content: right;
+		align-items: center;
+	}
+
+	.go-shopping {
+		width: 30%;
+		font-size: 12px;
+		color: grey;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.go-shopping-btn {
+		width: 80%;
+		border-radius: 10rpx;
+		height: 100%;
+		font-size: 12px;
+		color: grey;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-shadow: darkgray 0px 0px 2px 0px;
+	}
+
+	.discount-description-style {
+		color: red;
+		font-size: 14px;
+		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.store-description-style {
+		width: 100%;
+		color: black;
+		font-size: 14px;
+	}
+
+
+	/* 搜索框 */
+	.search-background-style {
+		width: 100%;
+		height: 130rpx;
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		z-index: 2;
+		background-color: #fff;
+	}
+
+	.search-logo-background-style {
+		width: 90%;
+		height: 60%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 10px;
+		background-color: #F5F5F5;
+	}
+
+	.image-background-style {
+		width: 10%;
+		height: 30rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.image-background-style image {
+		width: 40rpx;
+		height: 40rpx;
+	}
+
+	.input-background-style {
+		width: 85%;
+		height: 80%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.input-background-style input {
+		width: 90%;
+		height: 100%;
+	}
+
+	.input-background-style image {
+		width: 40rpx;
+		height: 40rpx;
+	}
+
+
+	.top-space-line-style {
+		height: 150rpx;
+		width: 100%;
+	}
+
+	.project-list-style {
+		width: 96%;
+		margin-left: 2%;
+		height: 155rpx;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		border-radius: 10rpx;
+		margin-bottom: 30rpx;
+	}
+
+	.shop-list-style {
+		width: 96%;
+		margin-left: 2%;
+		height: 200rpx;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		border-radius: 10rpx;
+		margin-bottom: 30rpx;
+	}
+
+	.date-status-style {
+		width: 98%;
+		margin-left: 1%;
+		height: 35%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.brief-information-style {
+		width: 96%;
+		margin-left: 2%;
+		height: 45rpx;
+		justify-content: center;
+		align-items: center;
+
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+    font-size: 15px;
+    margin-top: 10rpx;
+	}
+
+	.date-style {
+		width: 30%;
+		background-color: #49A8E7;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		border-radius: 10rpx;
+		height: 60%;
+		font-size: 14px;
+	}
+
+	.status-style {
+		width: 30%;
+		background-color: #49A8E7;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		border-radius: 10rpx;
+		height: 60%;
+		margin-left: 3%;
+		margin-right: 3%;
+		font-size: 14px;
+	}
+
+
+	.detail-style {
+		width: 30%;
+		background-color: #EBA54B;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		border-radius: 10rpx;
+		height: 60%;
+		font-size: 14px;
+	}
+
+	.button-style {
+		width: 90%;
+		margin-left: 5%;
+		height: 150rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		position: fixed;
+		bottom: 10rpx;
+	}
+
+	.button-style button {
+		width: 40%;
+		background-color: #49A8E7;
+		color: white;
+	}
+
+	.button-space {
+		width: 10%;
+	}
+
+	.description-style {
+		width: 90%;
+		margin-left: 5%;
+		display: flex;
+		margin-top: 30rpx;
+		margin-bottom: 30rpx;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		border-radius: 10px;
+		height: 320rpx;
+	}
+
+	.description-style textarea {
+		width: 96%;
+		margin-top: 20rpx;
+		margin-left: 2%;
+		height: 280rpx;
+	}
+
+	.doller-num-style {
+		width: 90%;
+		height: 80rpx;
+		margin-left: 5%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: darkgray 0px 0px 2px 0px;
+		margin-top: 30rpx;
+		border-radius: 10px;
+	}
+
+	.doller-num-style input {
+		width: 90%;
+		height: 100%;
+	}
+
+	.description-doller-style {
+		width: 100%;
+		height: 950rpx;
+	}
+
+	.release-background-style {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.content-null-style {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.image-title-background-style {
+		width: 50%;
+		height: 500rpx;
+	}
+
+	.title-context {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 14px;
+		color: lightgrey;
+	}
+
+	.not-release-image-style-background {
+		width: 100%;
+		height: 70%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.not-release-image-style-background image {
+		width: 250rpx;
+		height: 250rpx;
+	}
+
+	.click-release-style {
+		width: 100rpx;
+		height: 100rpx;
+		position: fixed;
+		z-index: 2;
+		bottom: 120px;
+		right: 40px;
+		background-color: #49A8E7;
+		color: white;
+		font-size: 14px;
+		border-radius: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: #49A8E7 1px 0px 5px 1px;
+	}
+
+	.need-description-budget-style {
+		width: 100%;
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 80rpx;
+	}
+
+	.scroll-item-line-two-style {
+		width: 100%;
+		border-top: 1rpx solid #e1e1e1;
+		content: '';
+	}

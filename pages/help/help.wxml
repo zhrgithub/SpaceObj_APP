@@ -1,0 +1,51 @@
+<view class="release-background-style">
+  <view v-if="list.length==0" class="content-null-style" click="touchLoad">
+    <view class="image-title-background-style">
+      <view class="not-release-image-style-background">
+        <image src="/static/notAnything.png" mode=""></image>
+      </view>
+      <view class="title-context">
+        点我加载信息~
+      </view>
+    </view>
+  </view>
+  <!-- 发布的列表 -->
+  <view class="project-list-style" v-for="(item,idx) in list" :key="idx" click="toProjecDetail(item)">
+    <view class="date-status-style">
+      <view class="date-style">
+        {{timeStampTurnTime(item.createTime)}}
+      </view>
+      <view class="status-pass-style" v-if="item.hpStatus==0">
+        还差{{10-item.hpNumber}}人
+      </view>
+      <view class="status-style" v-if="item.hpStatus==1">
+        助力成功
+      </view>
+      <view class="status-refuse-style" v-if="item.hpStatus==2">
+        已删除
+      </view>
+      <view class="status-refuse-style" v-if="item.hpStatus==3">
+        甲方已成交
+      </view>
+      <view class="status-style">
+        查看详情
+      </view>
+    </view>
+    <view class="brief-information-style">
+      项目预算：{{item.pprice}}元；项目描述：{{item.pcontent}}
+    </view>
+    <view class="slider-style">
+      <slider :value="item.hpNumber" activeColor="green" backgroundColor="darkgray" block-color="#49A8E7" block-size="10" show-value min="0" max="10" disabled="true" />
+    </view>
+  </view>
+
+  <!-- 提示下拉刷新~ -->
+  <view class="tips-background-style" v-if="list.length>0&&list.length<10">
+    下 拉 刷 新 ~ ~ ~
+  </view>
+  <!-- 提示上滑加载更多~ -->
+  <view class="tips-background-style" v-if="list.length>=10">
+    上 滑 加 载 更 多 ~ ~ ~
+  </view>
+
+</view>
