@@ -1,0 +1,93 @@
+<view class="container" v-if="online==1">
+		<view class="shop-list-style" bindtap="editAdvertise(item)" v-for="(item,idx) in list" :key="idx">
+			<view class="commodity-image-description-background-style">
+				<view class="commodity-image-background-style">
+					<image :src="item.jdAdImageLink" mode=""></image>
+				</view>
+				<view class="description-background-style">
+					<view class="title-description-style">
+						{{item.jdAdName}}
+					</view>
+					<view class="store-description-style">
+						商家：{{item.jdAdStoreName}}
+					</view>
+
+					<view class="discount-description-style">
+						优惠卷：{{item.jdAdCoupon}}
+					</view>
+
+					<view class="price-good-diss-style">
+						<view class="price-num-style">
+							价格：￥{{item.jdAdPrice}}
+						</view>
+						<view class="good-diss-style">
+							好评：{{item.jdAdCommentNum}}万+
+						</view>
+					</view>
+
+				</view>
+			</view>
+		</view>
+
+		<view class="click-release-style" bindtap="addAdvertise">添加</view>
+		<uni-popup ref="popup" background-color="#fff">
+			<view class="need-description-budget-style">
+				广告表单
+			</view>
+			<view class="scroll-item-line-two-style"></view>
+			<view class="description-doller-style">
+
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						商品超链接：
+					</view>
+					<input :value="jdAdHyperlink" bindinput="setAdHyperlink"/>
+				</view>
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						图片超链接：
+					</view>
+					<input :value="jdAdImageLink" bindinput="setAdImageLink"/>
+				</view>
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						商品名称：
+					</view>
+					<input :value="jdAdName" bindinput="setAdName"/>
+				</view>
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						商店名称：
+					</view>
+					<input :value="jdAdStoreName" bindinput="setAdStoreName"/>
+				</view>
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						优惠券描述：
+					</view>
+					<input :value="jdAdCoupon" bindinput="setAdCoupon"/>
+				</view>
+
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						价格：
+					</view>
+					<input :value="jdAdPrice" bindinput="setAdPrice"/>
+				</view>
+				<view class="doller-num-style">
+					<view class="title-context-style">
+						好评数量：
+					</view>
+					<input :value="jdAdCommentNum" bindinput="setAdCommentNum"/>
+				</view>
+
+				<view class="button-style">
+					<button bindtap="del">删除</button>
+					<view class="button-space"></view>
+					<button bindtap="submit">保存</button>
+				</view>
+			</view>
+		</uni-popup>
+
+
+	</view>

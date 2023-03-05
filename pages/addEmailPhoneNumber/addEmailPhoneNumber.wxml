@@ -1,0 +1,25 @@
+<view class="container" v-if="online==1">
+  <view class="edit-background-style">
+    <view class="change-tips">
+      联系方式
+    </view>
+    <view class="change-input-style">
+      <input type="text" maxlength="11" placeholder="设置QQ/微信/手机号" :value="phoneNumber" input="setPhoneNumber"/>
+    </view>
+  </view>
+
+  <view class="edit-background-style">
+    <view class="change-tips">
+      邮箱
+    </view>
+    <view class="change-input-style">
+      <input type="text" maxlength="20" placeholder="请设置邮箱" :value="email" input="setEmail"/>
+    </view>
+  </view>
+
+  <view class="save-btn-style">
+    <button click="saveUserInfo">保存</button>
+  </view>
+
+
+</view>

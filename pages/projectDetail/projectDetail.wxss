@@ -1,0 +1,90 @@
+.main-content-right {
+	width: 100%;
+	height: 200rpx;
+	display: none;
+}
+
+.project-detail-background-style {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.base-info-panel-style {
+	width: 96%;
+	margin-left: 2%;
+	height: 300rpx;
+	box-shadow: darkgray 0px 0px 2px 0px;
+	margin-top: 50rpx;
+	border-radius: 10px;
+}
+
+.project-num-status-style {
+	width: 90%;
+	margin-left: 5%;
+	height: 95rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+}
+
+.project-numer-style {
+	width: 50%;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ip-address-style {
+	width: 100%;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.description-requirement-style {
+	width: 96%;
+	margin-left: 2%;
+	margin-top: 50rpx;
+	border-radius: 10rpx;
+	box-shadow: darkgray 0px 0px 2px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.description-content-style {
+	width: 90%;
+	margin-top: 30rpx;
+	margin-bottom: 30rpx;
+	font-size: 15px;
+}
+
+.btn-background-style {
+	height: 120rpx;
+	position: fixed;
+	bottom: 0rpx;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+}
+
+.btn-style {
+	width: 96%;
+	background-color: #49a8e7;
+	color: white;
+	height: 80rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.space-line-style {
+	width: 100%;
+	height: 200rpx;
+}

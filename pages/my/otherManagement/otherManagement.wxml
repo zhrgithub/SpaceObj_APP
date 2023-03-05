@@ -1,0 +1,40 @@
+<view class="container">
+		<view class="edit-background-style">
+			<view class="change-tips">
+				客服微信
+			</view>
+			<view class="change-input-style">
+				<input type="text" :value="wechat" bindinput="setWechat"/>
+			</view>
+		</view>
+
+		<view class="edit-background-style">
+			<view class="change-tips">
+				下载链接
+			</view>
+			<view class="change-input-style">
+				<input type="text" :value="downloadUrl" bindinput="setDownLoad"/>
+			</view>
+		</view>
+
+		<view class="edit-background-style">
+			<view class="change-tips">
+				上线开关
+			</view>
+			<view class="change-input-style">
+				<switch color="#49A8E7" bindchange="setOnline" :checked="online==1" />
+			</view>
+		</view>
+
+		<view class="edit-background-style">
+			<view class="change-tips">
+				系统版本号设置
+			</view>
+			<view class="change-input-style">
+				<input type="number" :value="version" bindinput="serVersion"/>
+			</view>
+		</view>
+		<view class="save-btn-style">
+			<button bindtap="save">保存</button>
+		</view>
+	</view>
